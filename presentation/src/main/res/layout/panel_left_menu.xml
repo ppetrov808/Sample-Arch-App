@@ -1,0 +1,128 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingEnd="@dimen/default_padding"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_hor_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_hor_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_ver_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.13"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_ver_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.87"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@color/white"
+        android:scaleType="center"
+        android:src="@drawable/ic_avatar_empty"
+        app:layout_constraintBottom_toTopOf="@id/tv_name"
+        app:layout_constraintStart_toEndOf="@+id/line_ver_0"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="start|center"
+        android:maxLines="1"
+        style="@style/Drawer.TextView.Name"
+        app:layout_constraintBottom_toTopOf="@id/line_hor_0"
+        app:layout_constraintEnd_toStartOf="@+id/line_ver_1"
+        app:layout_constraintStart_toEndOf="@+id/line_ver_0"
+        app:layout_constraintTop_toBottomOf="@id/img_avatar"
+        tools:text="James Sullyvan"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_logo"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/line_hor_0"
+        app:layout_constraintEnd_toStartOf="@+id/line_ver_1"
+        app:layout_constraintStart_toEndOf="@+id/line_ver_0"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="@color/supernova"
+        app:layout_constraintBottom_toTopOf="@id/line_hor_0"
+        app:layout_constraintEnd_toStartOf="@+id/line_ver_1"
+        app:layout_constraintStart_toEndOf="@+id/line_ver_0"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/menu_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/tv_drawer_padding_top_first"
+        android:text="@string/nav_menu_profile"
+        style="@style/Drawer.TextView"
+        app:layout_constraintStart_toEndOf="@id/line_ver_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_divider"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/menu_about_us"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/tv_drawer_padding_top_first"
+        android:text="@string/nav_menu_about_us"
+        style="@style/Drawer.TextView"
+        app:layout_constraintStart_toEndOf="@id/line_ver_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_profile"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/menu_privacy_policy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/tv_drawer_padding_top_first"
+        android:text="@string/nav_menu_privacy_policy"
+        style="@style/Drawer.TextView"
+        app:layout_constraintStart_toEndOf="@id/line_ver_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_about_us"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_log_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nav_menu_logout"
+        style="@style/Drawer.TextView"
+        app:layout_constraintStart_toEndOf="@id/line_ver_0"
+        app:layout_constraintTop_toBottomOf="@id/line_hor_1"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        release {
+            debuggable true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
+    }
+}
+
+dependencies {
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.rx_kotlin
+    implementation deps.support.core_ktx
+
+    implementation deps.javax.annotations
+    implementation deps.javax.inject
+    api deps.joda.time
+}

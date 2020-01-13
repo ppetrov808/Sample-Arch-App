@@ -1,0 +1,119 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def env = System.getenv()
+def number = env['BUILD_NUMBER']
+def final_number = number as Integer ?: 1
+def param_version_name = env['version_name']
+
+android {
+
+    compileSdkVersion build_versions.target_sdk
+
+    defaultConfig {
+        applicationId "${APPLICATION_ID}"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode final_number
+        versionName param_version_name + "." + number
+        archivesBaseName = "TestArch-" + versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        renderscriptTargetApi build_versions.target_sdk
+        renderscriptSupportModeEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+
+    signingConfigs {
+        debug {}
+        release {}
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.test'
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            ext.enableCrashlytics = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        disable 'ResourceType'
+        disable 'StringFormatInvalid'
+    }
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':domain')
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.rx_kotlin
+    implementation deps.support.annotations
+    implementation deps.support.app_compat
+    implementation deps.support.design
+    implementation deps.support.v4
+    implementation deps.constraint_layout
+    implementation deps.support.core_ktx
+    implementation deps.support.recyclerview
+
+    implementation deps.javax.annotations
+    implementation deps.javax.inject
+
+    implementation deps.arch_core.runtime
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt deps.lifecycle.compiler
+
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
+    implementation deps.timber
+    implementation deps.rxjava2
+    implementation deps.rx_android
+
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android_support
+    kapt deps.dagger.compiler
+    kapt deps.dagger.android_support_compiler
+
+    implementation deps.okhttp.runtime
+    implementation deps.okhttp.logging
+    implementation deps.google_gson
+
+    implementation deps.glide.runtime
+    implementation deps.glide.okhttp_integration
+    kapt deps.glide.compiler
+
+    implementation deps.reactive_streams.core
+
+    implementation deps.permission_dispatcher.core
+    kapt deps.permission_dispatcher.kapt
+
+    annotationProcessor deps.auto_value.core
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text.Title.Bold">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text.Subhead" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text2.Subhead" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text.Body2" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text.Body1" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text.Caption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text2.Caption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="Text2.SubCaption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+</resources>

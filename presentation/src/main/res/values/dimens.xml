@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="statusbar_view_height">0dp</dimen>
+
+    <dimen name="stepview_icon_size">20dp</dimen>
+
+    <!--Drawer-->
+    <dimen name="tv_drawer_padding_top_first">24dp</dimen>
+    <dimen name="tv_drawer_padding_top">12dp</dimen>
+    <dimen name="tv_drawer_padding_bottom">12dp</dimen>
+    <dimen name="tv_drawer_text_size">20sp</dimen>
+    <dimen name="tv_drawer_drawable_padding">24dp</dimen>
+    <dimen name="tv_drawer_name_text_size">18sp</dimen>
+
+    <!-- Margin-->
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_and_half">24dp</dimen>
+    <dimen name="button_margin">30dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="button_height">40dp</dimen>
+
+    <!-- Padding-->
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="default_padding_and_half">24dp</dimen>
+
+    <!-- Tab bar-->
+    <dimen name="default_tab_bar_gradient_height">100dp</dimen>
+
+    <dimen name="default_negative_margin">-22.5dp</dimen>
+    <dimen name="default_positive_margin">22.5dp</dimen>
+
+    <!-- Controls-->
+    <dimen name="control_bg_corner_radius">2dp</dimen>
+    <dimen name="control_bg_corner_radius1">31dp</dimen>
+
+    <dimen name="control_margin_top_big">22dp</dimen>
+    <dimen name="control_margin_top">12dp</dimen>
+
+    <!-- Edit Text-->
+    <dimen name="edit_text_line_width">1dp</dimen>
+    <dimen name="edit_text_line_width_activated">2dp</dimen>
+    <dimen name="edit_text_padding_top">6dp</dimen>
+    <dimen name="edit_text_padding_bottom">7.5dp</dimen>
+
+    <!--TextView.Bold-->
+    <dimen name="tv_bold_padding_start" tools:ignore="MissingDefaultResource">18dp</dimen>
+    <dimen name="tv_bold_padding_end">18dp</dimen>
+    <dimen name="tv_bold_padding_top">8dp</dimen>
+    <dimen name="tv_bold_padding_bottom">8dp</dimen>
+
+    <!-- Auth screen-->
+    <dimen name="auth_card_padding_top">20dp</dimen>
+    <dimen name="auth_card_elevation">5dp</dimen>
+
+    <!-- Login screen-->
+    <dimen name="login_bg_height">318.7dp</dimen>
+    <dimen name="login_content_margin_top">177dp</dimen>
+    <dimen name="login_logo_margin_top">87dp</dimen>
+    <dimen name="login_card_margin_bottom">20dp</dimen>
+    <dimen name="login_card_padding_bottom">28.5dp</dimen>
+    <dimen name="login_tv_padding">12dp</dimen>
+
+    <!-- Auth screens-->
+    <dimen name="auth_default_padding">24dp</dimen>
+
+    <!--Dialog-->
+    <dimen name="tv_dialog_title_text_size">20sp</dimen>
+    <dimen name="tv_dialog_padding_bottom">24dp</dimen>
+    <dimen name="tv_dialog_description_text_size">16sp</dimen>
+    <dimen name="tv_dialog_action_text_size">16sp</dimen>
+    <dimen name="tv_dialog_action_base_padding">12dp</dimen>
+
+</resources>

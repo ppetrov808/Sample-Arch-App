@@ -1,0 +1,71 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def env = System.getenv()
+def serverHost = env['SERVER_HOST'] ?: SERVER_HOST
+
+android {
+
+    compileSdkVersion build_versions.target_sdk
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        multiDexEnabled = true
+        buildConfigField 'String', 'BASE_URL', "\"${HTTP_SHCEME}${serverHost}/${SUFFIX}\""
+        buildConfigField 'String', 'SERVER_HOST', "\"${serverHost}\""
+        buildConfigField 'Integer', 'PORT', "${PORT_STAGE}"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        release {
+            debuggable true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
+    }
+
+}
+
+dependencies {
+    implementation project(':domain')
+
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.rx_kotlin
+    implementation deps.support.core_ktx
+    implementation deps.rxjava2
+    implementation deps.rx_android
+
+    implementation deps.javax.annotations
+    implementation deps.javax.inject
+
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava
+    implementation deps.okhttp.runtime
+    implementation deps.okhttp.logging
+    implementation deps.google_gson
+
+    api deps.room.runtime
+    api deps.room.rxjava2
+    kapt deps.room.compiler
+
+    api deps.stripe.stripe
+    implementation deps.google_pay.wallet
+    implementation deps.google_services.firebase_core
+}

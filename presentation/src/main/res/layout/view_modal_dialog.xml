@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/tv_dialog_padding_bottom"
+        android:src="@drawable/ic_warning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title"
+        style="@style/Dialog.TextView.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_warning"
+        tools:text="Lorem Ipsum" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_description"
+        style="@style/Dialog.TextView.Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_action"
+        style="@style/Dialog.TextView.Action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/tv_dialog_action_base_padding"
+        android:text="@string/yes"
+        app:layout_constraintEnd_toStartOf="@id/tv_cancel"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_cancel"
+        style="@style/Dialog.TextView.Action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/tv_dialog_action_base_padding"
+        android:paddingEnd="0dp"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">Test Arch</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="label_empty_result">Empty result</string>
+    <string name="label_error_result">Error result</string>
+    <string name="button_try_again">Try Again</string>
+
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_other">Other</string>
+
+    <string name="english">English</string>
+    <string name="german">German</string>
+    <string name="text_germany">Germany</string>
+
+    <string name="nav_menu_my_card">My Card</string>
+    <string name="nav_menu_profile">Profile</string>
+    <string name="nav_menu_about_us">About Us</string>
+    <string name="nav_menu_privacy_policy">Privacy Policy</string>
+    <string name="nav_menu_logout">Log Out</string>
+
+    <string name="title_auth">Auth</string>
+    <string name="title_sign_up">Registration</string>
+    <string name="title_password_recovery">Password recovery</string>
+    <string name="title_change_password">Change password</string>
+
+    <string name="edit_email_hint">E-Mail</string>
+    <string name="edit_password_hint">Password</string>
+    <string name="edit_password_repeat_hint">Repeat password</string>
+    <string name="edit_old_password">Old Password</string>
+    <string name="edit_new_password">New Password</string>
+    <string name="edit_confirm_new_password">Confirm new password</string>
+    <string name="label_dont_have_account">Dont you have account?</string>
+    <string name="button_login">Login</string>
+    <string name="button_sign_up">Sign Up</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="button_forgot_password">Forgot password?</string>
+    <string name="no_internet_connection">No Internet connection</string>
+    <string name="zip">ZIP</string>
+
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_apply">Apply</string>
+
+    <string name="progress_message_auth">Processing auth…</string>
+    <string name="progress_message_load">Data is loading…</string>
+
+    <!-- LogIn -->
+    <string name="invalid_email">Invalid E-Mail Address</string>
+    <string name="not_exist_email_err">You\'re not registered. Please feel free to register with us using the "Register" button.</string>
+    <string name="empty_email">Please enter your email address</string>
+    <string name="empty_password">Please enter password</string>
+    <string name="wrong_password">Please check your password</string>
+    <string name="please_wait">Please wait</string>
+
+    <!-- LogOut -->
+    <string name="log_out">Log Out</string>
+    <string name="log_out_description">Are you sure?</string>
+
+    <!-- Sign Up -->
+    <string name="empty_first_name">Please enter first name</string>
+    <string name="empty_last_name">Please enter last name</string>
+    <string name="empty_password_repeat">Repeat password</string>
+    <string name="password_doesnt_match">Passwords do not match</string>
+    <string name="invalid_password">Password is wrong</string>
+    <string name="invalid_password_message">Your password must contain letters and numbers and consist of at least 8 characters</string>
+    <string name="login_exists">Email already exists</string>
+    <string name="empty_date_of_birth">Please enter the date of birth</string>
+
+    <!--alert dialog-->
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="error">Error</string>
+    <string name="yes">Yes</string>
+    <string name="settings">Settings</string>
+    <string name="location_title">Your location is deactivated.</string>
+    <string name="location_message">Go to your phone\'s settings and activate location access.</string>
+
+    <!--profile-->
+    <string name="account_information">Account information</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="language">Language</string>
+    <string name="country">Country</string>
+    <string name="change_password">Change password</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="address_to">First name and Last name</string>
+    <string name="index">Index</string>
+    <string name="delete_account">Delete account</string>
+    <string name="add_payment_method">Add payment method</string>
+    <string name="add_photo">Add a photo</string>
+    <string name="change_photo">Change photo</string>
+    <string name="picture_upload">Upload picture</string>
+    <string name="profile_update">Update profile</string>
+    <string name="pick_your_gender">Please choose gender</string>
+    <string name="select_your_language">Choose a language</string>
+    <string name="delete_account_description">Are you sure you want to delete your account?</string>
+    <string name="deleting_account_sent_link">You will receive the link to confirm the deletion of your account to your email address.</string>
+
+</resources>
+
