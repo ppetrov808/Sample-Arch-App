@@ -86,14 +86,14 @@
                         android:text="@string/title_auth" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/til_login"
+                        android:id="@+id/tilLogin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/control_margin_top_big"
                         android:hint="@string/edit_email_hint">
 
                     <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/auth_edit_email"
+                            android:id="@+id/authEmailEdit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
@@ -104,7 +104,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/til_password"
+                        android:id="@+id/tilPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/control_margin_top_big"
@@ -113,7 +113,7 @@
                         app:passwordToggleTint="@color/gray_ghost">
 
                     <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/auth_edit_password"
+                            android:id="@+id/authPasswordEdit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
@@ -122,7 +122,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/auth_button_login"
+                        android:id="@+id/authLoginBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/GreenMaterialButton"
@@ -132,6 +132,7 @@
                 <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/control_margin_top_big"
                         android:orientation="horizontal">
@@ -143,17 +144,19 @@
                             android:text="@string/label_dont_have_account" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/auth_button_sign_up"
+                            android:id="@+id/authSignUpBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginStart="6dp"
+                            android:textColor="@color/colorPrimary"
                             android:fontFamily="@font/open_sans_regular"
                             android:text="@string/sign_up" />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/auth_button_forgot_password"
+                        android:id="@+id/authForgotPasswordBtn"
+                    android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"

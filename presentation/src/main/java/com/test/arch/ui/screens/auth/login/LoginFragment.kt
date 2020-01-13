@@ -11,14 +11,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.textfield.TextInputLayout
 import com.test.arch.domain.model.auth.Credentials
 import com.test.arch.ui.R
 import com.test.arch.ui.base.BaseFragment2
@@ -27,12 +23,11 @@ import com.test.arch.ui.extensions.setEndCompoundDrawable
 import com.test.arch.ui.extensions.showToast
 import com.test.arch.ui.screens.auth.ResetErrorTextWatcherWithSelectedText
 import com.test.arch.ui.utils.StringUtils
+import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 @SuppressLint("ResourceType")
 class LoginFragment : BaseFragment2<LoginViewModel>() {
-
-    //region base
 
     @Inject
     lateinit var vmFactory: LoginViewModelFactory
@@ -43,72 +38,42 @@ class LoginFragment : BaseFragment2<LoginViewModel>() {
 
     override fun getViewModelClass() = LoginViewModel::class.java
 
-    //endregion
-
-    //region fields
-
-    lateinit var authLogin: AppCompatEditText
-
-    lateinit var authPassword: AppCompatEditText
-
-    lateinit var btnLogin: AppCompatButton
-
-    lateinit var tvSignUp: AppCompatTextView
-
-    lateinit var tvForgotPassword: AppCompatTextView
-
-    lateinit var tilPassword: TextInputLayout
-
-    lateinit var tilLogin: TextInputLayout
-
-    //endregion
-
-    //region live
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
 
-
     @SuppressLint("ShowToast")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        authLogin = view.findViewById(R.id.auth_edit_email)
-        authPassword = view.findViewById(R.id.auth_edit_password)
-        btnLogin = view.findViewById(R.id.auth_button_login)
-        tvSignUp = view.findViewById(R.id.auth_button_sign_up)
-        tvForgotPassword = view.findViewById(R.id.auth_button_forgot_password)
-        tilPassword = view.findViewById(R.id.til_password)
-        tilLogin = view.findViewById(R.id.til_login)
-        btnLogin.setOnClickListener { authorize() }
-        tvSignUp.setOnClickListener { viewModel.onSignUpClicked() }
-        tvForgotPassword.setOnClickListener { viewModel.onRecoveryPasswordClicked() }
-        authLogin.setEndCompoundDrawable(R.drawable.ic_profile_active, R.drawable.ic_profile_disabled)
-        authLogin.setOnFocusChangeListener { _, hasFocus ->
+        authLoginBtn?.setOnClickListener { authorize() }
+        authSignUpBtn?.setOnClickListener { viewModel.onSignUpClicked() }
+        authForgotPasswordBtn?.setOnClickListener { viewModel.onRecoveryPasswordClicked() }
+        authEmailEdit?.setEndCompoundDrawable(R.drawable.ic_profile_active, R.drawable.ic_profile_disabled)
+        authEmailEdit?.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
-                for (drawable in authLogin.compoundDrawables) {
+                for (drawable in authEmailEdit.compoundDrawables) {
                     drawable?.colorFilter = PorterDuffColorFilter(
                         ContextCompat.getColor(
-                            authLogin.context,
+                            authEmailEdit.context,
                             R.color.orange_vermilion
                         ), PorterDuff.Mode.SRC_IN
                     )
                 }
             } else {
-                for (drawable in authLogin.compoundDrawables) {
+                for (drawable in authEmailEdit.compoundDrawables) {
                     drawable?.colorFilter = PorterDuffColorFilter(
                         ContextCompat.getColor(
-                            authLogin.context,
+                            authEmailEdit.context,
                             R.color.gray_ghost
                         ), PorterDuff.Mode.SRC_IN
                     )
                 }
             }
         }
-        authLogin.addTextChangedListener(ResetErrorTextWatcherWithSelectedText(tilLogin, authLogin))
-        StringUtils.addSpaceFilter(authLogin)
-        authPassword.setOnFocusChangeListener { _, hasFocus ->
+        authEmailEdit.addTextChangedListener(ResetErrorTextWatcherWithSelectedText(tilLogin, authEmailEdit))
+        StringUtils.addSpaceFilter(authEmailEdit)
+        authPasswordEdit.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 tilPassword.setPasswordVisibilityToggleTintList(
                     AppCompatResources.getColorStateList(
@@ -125,13 +90,13 @@ class LoginFragment : BaseFragment2<LoginViewModel>() {
                 )
             }
         }
-        authPassword.addTextChangedListener(ResetErrorTextWatcherWithSelectedText(tilPassword, authPassword))
+        authPasswordEdit.addTextChangedListener(ResetErrorTextWatcherWithSelectedText(tilPassword, authPasswordEdit))
     }
 
     override fun onResume() {
         super.onResume()
-        authLogin.text?.clear()
-        authPassword.text?.clear()
+        authEmailEdit.text?.clear()
+        authPasswordEdit.text?.clear()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -174,25 +139,21 @@ class LoginFragment : BaseFragment2<LoginViewModel>() {
         return super.onOptionsItemSelected(item)
     }
 
-    //endregion
-
     private fun showError(fieldFailure: LoginViewModel.ErrorField) {
-        val color = ContextCompat.getColor(authLogin.context, android.R.color.holo_red_dark)
+        val color = ContextCompat.getColor(authEmailEdit.context, android.R.color.holo_red_dark)
         when (fieldFailure) {
             is LoginViewModel.ErrorField.Login -> {
                 tilLogin.error = getString(fieldFailure.resource)
-                authLogin.setTextColor(color)
-                authLogin.requestFocus()
+                authEmailEdit.setTextColor(color)
+                authEmailEdit.requestFocus()
             }
             is LoginViewModel.ErrorField.Password -> {
                 tilPassword.error = getString(fieldFailure.resource)
-                authPassword.setTextColor(color)
-                authPassword.requestFocus()
+                authPasswordEdit.setTextColor(color)
+                authPasswordEdit.requestFocus()
             }
         }
     }
-
-    //region navigate
 
     private fun route(node: LoginViewModel.RouterNode) {
         when (node) {
@@ -205,19 +166,13 @@ class LoginFragment : BaseFragment2<LoginViewModel>() {
         }
     }
 
-    //endregion
-
-    //region own methods
-
     private fun authorize() {
         val credentials = Credentials(
-            authLogin.text.toString(),
-            authPassword.text.toString()
+            authEmailEdit.text.toString(),
+            authPasswordEdit.text.toString()
         )
         viewModel.onLoginClicked(credentials)
     }
-
-    //endregion
 
     private fun EditText.setEndCompoundDrawable(activeDrawableId: Int, disabledDrawableId: Int) {
         val stateListDrawable = context.getStateListDrawable(activeDrawableId, disabledDrawableId)

@@ -6,6 +6,7 @@ import com.test.arch.domain.interactor.auth.LogoutUseCase
 import com.test.arch.domain.interactor.profile.LoadProfileCacheUseCase
 import com.test.arch.domain.interactor.profile.ProfileStateUseCase
 import com.test.arch.domain.model.profile.UserProfileEntity
+import com.test.arch.ui.Constants.LOGIN_ENTER_CODE
 import com.test.arch.ui.Constants.PROFILE_ENTER_CODE
 import com.test.arch.ui.base.BaseViewModel2
 import com.test.arch.ui.base.mvvm.SingleLiveEvent
@@ -58,13 +59,13 @@ class MainActivityViewModel constructor(
                 override fun onNext(auth: Boolean) {
                     isAuth = auth
                     if (!auth) {
-                        routerLiveData.value = RouterNode.Login(1)
+                        routerLiveData.value = RouterNode.Login(LOGIN_ENTER_CODE)
                     }
                 }
 
                 override fun onError(e: Throwable) {
                     isAuth = false
-                    routerLiveData.value = RouterNode.Login(0)
+                    routerLiveData.value = RouterNode.Login(LOGIN_ENTER_CODE)
                 }
 
                 override fun onComplete() {}
@@ -112,11 +113,11 @@ class MainActivityViewModel constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableCompletableObserver() {
                     override fun onComplete() {
-                        routerLiveData.value = RouterNode.Login(1)
+                        routerLiveData.value = RouterNode.Login(LOGIN_ENTER_CODE)
                     }
 
                     override fun onError(e: Throwable) {
-                        routerLiveData.value = RouterNode.Login(0)
+                        routerLiveData.value = RouterNode.Login(LOGIN_ENTER_CODE)
                     }
                 })
         )
@@ -128,18 +129,16 @@ class MainActivityViewModel constructor(
             routerLiveData.value = if (it) {
                 RouterNode.Profile
             } else {
-                RouterNode.Login(PROFILE_ENTER_CODE)
+                RouterNode.Login(LOGIN_ENTER_CODE)
             }
         } ?: run {
-            RouterNode.Login(PROFILE_ENTER_CODE)
+            RouterNode.Login(LOGIN_ENTER_CODE)
         }
     }
 
     //region route
     sealed class RouterNode {
-
         object Profile : RouterNode()
-
         data class Login(val code: Int) : RouterNode()
     }
 

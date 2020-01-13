@@ -2,9 +2,7 @@ package com.test.arch.ui.screens.auth.login
 
 import android.text.TextUtils
 import com.test.arch.domain.exceptions.IncorrectCredentialsException
-import com.test.arch.domain.interactor.RemovePersonalAuthWhenErrorUseCase
 import com.test.arch.domain.interactor.auth.AuthUseCase
-import com.test.arch.domain.interactor.auth.CreateDeviceUseCase
 import com.test.arch.domain.interactor.profile.DownloadProfileUseCase
 import com.test.arch.domain.model.auth.Credentials
 import com.test.arch.ui.Constants
@@ -16,12 +14,9 @@ import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-
 class LoginViewModel @Inject constructor(
     private val authUseCase: AuthUseCase,
-    private val createDeviceUseCase: CreateDeviceUseCase,
-    private val downloadProfileUseCase: DownloadProfileUseCase,
-    private val removePersonalAuthWhenErrorUseCase: RemovePersonalAuthWhenErrorUseCase
+    private val downloadProfileUseCase: DownloadProfileUseCase
 ) : BaseViewModel2() {
 
     companion object {
@@ -62,11 +57,6 @@ class LoginViewModel @Inject constructor(
             authUseCase.execute(credentials)
                 .doOnSubscribe { loadingStateLiveData.postValue(true) }
                 .flatMapCompletable { downloadProfileUseCase.execute() }
-                //.andThen(createDeviceUseCase.execute())
-                //.onErrorResumeNext {
-                //    return@onErrorResumeNext removePersonalAuthWhenErrorUseCase.execute()
-                //        .andThen(Completable.error(it))
-                //}
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableCompletableObserver() {

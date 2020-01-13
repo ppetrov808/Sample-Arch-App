@@ -1,6 +1,7 @@
 package com.test.arch.ui.screens.main
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.test.arch.domain.model.profile.UserProfileEntity
+import com.test.arch.ui.Constants.LOGIN_ENTER_CODE
 import com.test.arch.ui.R
 import com.test.arch.ui.base.BaseToolbarActivity
 import com.test.arch.ui.base.alert_dialog.MyAlertDialogBuilder
@@ -167,8 +169,14 @@ class MainActivity : BaseToolbarActivity<MainActivityViewModel>() {
             }
             is MainActivityViewModel.RouterNode.Login -> {
                 navigateActivity(AuthActivity::class.java, routerNode.code)
-                //finish()
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_CANCELED && requestCode == LOGIN_ENTER_CODE) {
+            finish()
         }
     }
 

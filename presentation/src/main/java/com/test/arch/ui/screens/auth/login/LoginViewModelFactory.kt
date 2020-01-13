@@ -10,21 +10,17 @@ import javax.inject.Inject
 
 class LoginViewModelFactory @Inject constructor(
     private val authUseCase: AuthUseCase,
-    private val createDeviceUseCase: CreateDeviceUseCase,
-    private val downloadProfileUseCase: DownloadProfileUseCase,
-    private val removePersonalAuthWhenErrorUseCase: RemovePersonalAuthWhenErrorUseCase
+    private val downloadProfileUseCase: DownloadProfileUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             LoginViewModel(
-                authUseCase, createDeviceUseCase,
-                downloadProfileUseCase,
-                removePersonalAuthWhenErrorUseCase
+                authUseCase,
+                downloadProfileUseCase
             ) as T
         } else {
             throw IllegalArgumentException("ViewModel Not Found")
         }
     }
-
 }
